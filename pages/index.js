@@ -4,47 +4,13 @@ import Link from 'next/link'
 import MainLayout from '../components/layouts/main-layout'
 import styles from '../styles/Home.module.css'
 
-// const Hero = ({}) => (
-//   <div className="flex flex-col lg:grid lg:grid-cols-6 gap-8">
-
-//     <div className="col-span-3 lg:order-2">
-//       <div className="relative aspect-video lg:aspect-square bg-red-500">
-//         <Image
-//           src="/img/stock/tools-0.jpg"
-//           layout="fill"
-//           alt="Image"
-//           className="object-cover" />
-//       </div>
-//     </div>
-
-//     <div className="col-span-3 lg:order-1 flex flex-col gap-4">
-//       <h1 className="text-3xl py-4">Ein Fab Lab für Mönchengladbach.</h1>
-//       <p className="w-3/4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit impedit ex deleniti voluptatibus sapiente voluptate, dolorum fugiat provident totam saepe harum natus corporis possimus aut error dolores repudiandae reiciendis voluptas!</p>
-//       <div className="flex flex-row">
-//         <Link href="#">
-//           <a className="py-2 px-4 bg-primary text-secondary rounded">Lorem Ipsum</a>
-//         </Link>
-//       </div>
-//     </div>
-
-//     <div className="bg-primary rounded grid md:grid-cols-4 row-start-6">
-//       {[1, 2, 3, 4].map((item, i) => (
-//         <div key={i} className="p-4">
-//           <i className="bi bi-activity text-5xl"/>
-//         </div>
-//       ))}
-//     </div>
-//   </div>
-// )
-
-
 const Hero = ({ }) => (
-  <div className="min-h-[80vh] grid grid-cols-1 grid-rows-6">
-    <div className="bg-secondary text-neutral-50 row-start-1 row-span-4 pb-32">
+  <div className=" grid grid-cols-1 grid-rows-5">
+    <div className="bg-secondary text-neutral-50 row-start-1 row-span-4 pt-16 pb-32">
       <div className="container mx-auto max-w-7xl p-4 flex flex-col lg:flex-row gap-8">
 
         <div className="lg:order-2 w-full">
-          <div className="relative aspect-video lg:aspect-square bg-red-500 rounded-lg truncate">
+          <div className="relative aspect-video lg:aspect-square rounded-lg truncate">
             <Image
               src="/img/stock/tools-0.jpg"
               layout="fill"
@@ -56,10 +22,10 @@ const Hero = ({ }) => (
         <div className="lg:order-1">
           <div className="flex flex-col gap-4 lg:gap-8 lg:w-3/4">
             <h1 className="text-2xl md:text-3xl lg:text-7xl">Ein Fab Lab für Mönchengladbach?</h1>
-            <p className="text-lg lg:text-2xl">Ein <strong>Fab Lab</strong> ("Fabrication Laboratory", dt. "Fabrikationslabor") ist eine offene Kreativwerkstatt, die das gemeinsame Arbeiten und Experimentieren mit der Herstellung von Dingen aller Art ermöglicht.</p>
+            <p className="text-lg lg:text-2xl">Ein <strong>Fab Lab</strong> (&quot;Fabrication Laboratory&quot;, dt. &quot;Fabrikationslabor&quot;) ist eine offene Kreativwerkstatt, die das gemeinsame Arbeiten und Experimentieren mit der Herstellung von Dingen aller Art ermöglicht.</p>
             <div className="flex flex-row pt-2">
               <Link href="#">
-                <a className="py-2 px-4 bg-primary text-secondary rounded">Lorem Ipsum</a>
+                <a className="py-2 px-4 bg-primary text-secondary rounded">Unterstützen</a>
               </Link>
             </div>
           </div>
@@ -68,7 +34,7 @@ const Hero = ({ }) => (
       </div>
     </div>
     <div className="row-start-5">
-      <div className="bg-primary lg:h-32 -my-[12%] md:-my-[10%] lg:-my-8 mx-[10%] rounded grid grid-cols-3 lg:grid-cols-5 items-center justify-center shadow-md">
+      <div className="bg-primary lg:h-32 -my-[12%] md:-my-[10%] lg:-my-8 m-4 lg:mx-[12%] rounded grid grid-cols-3 lg:grid-cols-5 items-center justify-center shadow-md">
         {[
           { title: 'Ideate', icon: 'bi bi-lightbulb' },
           { title: 'Make', icon: 'bi bi-tools' },
@@ -102,6 +68,210 @@ export default function Home() {
       </Head>
 
       <Hero />
+
+
+      <div id="lab" className="py-16">
+        <div className="container mx-auto max-w-7xl p-4 grid grid-cols-1 gap-8">
+          <div className="flex flex-col gap-4 lg:w-3/4">
+            <h2 className="text-2xl lg:text-3xl">Lab</h2>
+            <p className="text-lg lg:text-xl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores illum consequatur explicabo accusamus aut rerum debitis, facere ipsa dolore sint, nostrum aspernatur earum quo iste modi aperiam. Soluta, minus quo.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                image: '/img/stock/laser-0.jpg',
+                title: 'Laserschneiden',
+                text: '',
+              },
+              {
+                image: '/img/stock/print-0.jpg',
+                title: '3D-Druck',
+                text: '',
+              },
+              {
+                image: '/img/stock/electronics-0.jpg',
+                title: 'Elektronik & Robotik',
+                text: '',
+              },
+              {
+                image: '/img/stock/cnc-0.jpg',
+                title: 'CNC',
+                text: '',
+              },
+              {
+                image: '/img/stock/group-0.jpg',
+                title: 'Zusammenarbeit',
+                text: '',
+              },
+              {
+                image: '/img/stock/prototype-0.jpg',
+                title: 'Prototyping',
+                text: '',
+              },
+
+            ].map(({ title, image }, i) => (
+              <div key={i} className="flex flex-col gap-4">
+                <div className="aspect-video rounded truncate relative">
+                  <Image src={image} layout="fill" className="object-cover opacity-90 hover:opacity-100 transition-all" title={title} alt={title} />
+                </div>
+                <h3 className="text-xl font-bold">{title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+
+      <div id="needs" className="py-16 bg-secondary text-neutral-50">
+        <div className="container mx-auto max-w-7xl p-4 grid lg:grid-cols-2 gap-8">
+          <div className="flex flex-col gap-4 lg:w-3/4">
+            <h2 className="text-2xl lg:text-3xl">Location</h2>
+            <p className="text-lg lg:text-xl">Für die Umsetzung des Projekts wird eine geignete, gut erreichbare und offene Laction benötigt. Das FabLab soll Gäste einladen und auf die Stadt wirken.</p>
+            <div className="flex flex-row pt-2">
+              <Link href="#">
+                <a className="py-2 px-4 bg-primary text-secondary rounded">Einen Vorschlag machen</a>
+              </Link>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-8 items-center justify-center">
+            {[
+              {
+                title: 'Ein Leerstand?',
+                image: '/img/rheydt/IMG_7983.JPG',
+              },
+              {
+                title: 'Ein Leerstand?',
+                image: '/img/rheydt/IMG_7949.JPG',
+              },
+              {
+                title: 'Ein Leerstand?',
+                image: '/img/rheydt/IMG_7956.JPG',
+              },
+              {
+                title: 'Ein Leerstand?',
+                image: '/img/rheydt/IMG_7957.JPG',
+              },
+              {
+                title: 'Ein Leerstand?',
+                image: '/img/rheydt/IMG_7959.JPG',
+              },
+              {
+                title: 'Ein Leerstand?',
+                image: '/img/rheydt/IMG_7963.JPG',
+              },
+              {
+                title: 'Ein Leerstand?',
+                image: '/img/rheydt/IMG_7969.JPG',
+              },
+              {
+                title: 'Ein Leerstand?',
+                image: '/img/rheydt/IMG_7979.JPG',
+              },
+              {
+                title: 'Ein Leerstand?',
+                image: '/img/rheydt/IMG_7983.JPG',
+              },
+            ].map(({ title, image, href, organization }, i) => (
+              <div key={i} className="opacity-90 hover:opacity-100 transition-all rounded truncate" target="_blank">
+                <div className="aspect-video relative grid  items-center">
+                  <Image src={image} layout="fill" className="object-cover opacity-90 hover:opacity-100 transition-all" title={title} alt={title} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+
+      <div id="needs" className="py-16">
+        <div className="container mx-auto max-w-7xl p-4 grid grid-cols-1 gap-8">
+          <div className="flex flex-col gap-4 lg:w-3/4">
+            <h2 className="text-2xl lg:text-3xl">Vorbilder</h2>
+            <p className="text-lg lg:text-xl">Anregungen und Vorbilder lassen sich sowohl international, als auch in der Umgebung von Mönchengladbach finden. Das Konzept FabLab findet überall auf der Welt Anwendung. Nachfolgend findest Du ein paar Beispiele als Inspiration. <i className='bi bi-lightbulb'></i></p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 items-center justify-center">
+            {[
+              {
+                title: 'Fablabs.io',
+                image: 'https://www.fablabs.io/assets/logo-78c5ba6a9895eaf5debdd08d9856b62703ebf0658507f6972742505cb1f75a7b.svg',
+                href: 'https://www.fablabs.io/',
+                organization: 'fabfoundation & Co',
+              },
+              {
+                title: 'FabLab Düsseldorf',
+                image: 'https://garage-lab.de/wp-content/uploads/gl_logo-lang@4x-305x66.png',
+                href: 'https://garage-lab.de',
+                organization: 'GarageLab e.V.',
+              },
+              {
+                title: 'Fab Lab Siegen',
+                image: 'https://fablab-siegen.de/wp-content/uploads/2020/03/header_fablab.png',
+                href: 'https://garage-lab.de',
+                organization: 'Universität Siegen',
+              },
+              {
+                title: 'fabLAB Darmstadt',
+                image: 'https://www.lab3.org/wp-content/uploads/2021/07/20210630_LabLogofab.png',
+                href: 'https://www.lab3.org/labore/fablab/',
+                organization: 'LAB³ e.V.',
+              },
+              {
+                title: 'OpenLab Hamburg',
+                image: 'https://openlab-hamburg.de/wp-content/uploads/2021/09/Logo-fuer-neue-Webseite-bessere-Farbe-2048x1289.jpg',
+                href: 'https://openlab-hamburg.de/',
+                organization: 'Helmut-Schmidt-Universität',
+              },
+
+
+            ].map(({ title, image, href, organization }, i) => (
+              <Link key={i} href={href}>
+                <a className="grid grid-auto-rows gap-4 h-full bg-neutral-100 hover:bg-neutral-200 transition-all p-4" target="_blank">
+                  <div className="aspect-video relative grid  items-center">
+                    <img src={image} className="object-contain opacity-90 hover:opacity-100 transition-all" title={title} alt={title} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">{title}</h3>
+                    <span>{organization}</span>
+                  </div>
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
+
+      <div id="partner" className="py-16 bg-secondary text-neutral-50">
+        <div className="container mx-auto max-w-7xl p-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="flex flex-col gap-4 lg:w-3/4">
+            <h2 id="partner" className="text-2xl lg:text-3xl">Partner</h2>
+            <p className="text-lg lg:text-xl">Neben einem Träger braucht das Projekt Partner, die sich für seine Umsetzung engagieren und von der neuen Einrichtung profitieren. Insbesondere Unternehmen der Stadt, die Hochschule, Volkshochschule, sowie andere Bildungseinrichtungen sind hier herzlich eingeladen. <i className='bi bi-hearts'/></p>
+          </div>
+          <div className="grid grid-cols-4 gap-8">
+            {[
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/triangle.png' },
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/square.png' },
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/circle.png' },
+
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/square.png' },
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/circle.png' },
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/triangle.png' },
+
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/square.png' },
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/circle.png' },
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/triangle.png' },
+
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/square.png' },
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/circle.png' },
+              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/triangle.png' },
+            ].map(({ title, image }, i) => (
+              <div key={i} className="aspect-square rounded truncate relative">
+                <Image src={image} layout="fill" className="object-cover opacity-25 hover:opacity-50 transition-all" title={title} alt={title}/>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* <div className="bg-secondary text-neutral-50 h-[100vh] lg:h-[75vh]">
         <div className="container mx-auto max-w-7xl p-4">
