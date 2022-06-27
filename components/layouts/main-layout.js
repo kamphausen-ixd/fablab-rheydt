@@ -2,39 +2,34 @@ import Image from "next/image"
 import Link from "next/link"
 
 const Header = ({}) => (
-  <header className="w-full">
-    <div className="bg-gray-600 text-neutral-50 min-h-[40px]">
-      <div className="container max-w-7xl mx-auto flex items-center justify-end space-x-4 min-h-[40px]">
-        <Link href="#"><a>Deutsch</a></Link>
-        <Link href="#"><a>Englisch</a></Link>
-      </div>
-    </div>
-    <div className="bg-gray-100 min-h-[40px]">
-      <div className="container max-w-7xl mx-auto flex p-4">
-        <div className="flex items-center space-x-4">
-          <div className="relative w-[64px] h-[64px]">
-            <Image
-              src="/img/icons/cropped-icon_fablab-180x180.png"
-              alt="Fab Lab Logo"
-              title="Fab Lab Logo"
-              layout="fill" />
-          </div>
-          <div className="text-2xl font-bold">
-            FabLab für <br/>
-            Mönchengladbach
-          </div>
+  <header className="bg-secondary text-gray-50">
+    <div className="container mx-auto max-w-7xl">
+      <nav className="flex flex-row justify-between items-center p-4">
+        <Link href="/">
+          <a className="rounded block bg-primary">
+            <div className="relative w-[60px] h-[60px]">
+              <Image
+                src="/img/icons/cropped-icon_fablab-270x270.png"
+                layout="fill"
+                alt="Fab Lab"
+                title="Fab Lab für Mönchengladbach" />
+            </div>
+          </a>
+        </Link>
+        <div className="grow flex flex-row justify-end items-center">
+          {[0, 1, 2, 3, 4].map((item, i) => (
+            <Link key={i} href="#"><a className="py-2 px-4 rounded hover:bg-primary hover:text-secondary transition-all">Link {item}</a></Link>
+          ))}
         </div>
-        <nav className="grow flex items-center justify-end space-x-4 min-h-[40px] text-xl">
-          <Link href="#"><a>Startseite</a></Link>
-          <Link href="#"><a>Aktuelles</a></Link>
-          <Link href="#"><a>Unser Lab</a></Link>
-          <Link href="#"><a>Projekte &amp; Partner</a></Link>
-          <Link href="#"><a>Sicherheit</a></Link>
-          <Link href="#"><a>Kontakt</a></Link>
-        </nav>
-      </div>
+      </nav>
     </div>
   </header>
+)
+
+const Footer = ({}) => (
+  <footer className="bg-secondary text-gray-50">
+
+  </footer>
 )
 
 export default function MainLayout({ children }) {
@@ -44,9 +39,7 @@ export default function MainLayout({ children }) {
       <main>
         {children}
       </main>
-      <footer>
-
-      </footer>
+      <Footer/>
     </div>
   )
 }
