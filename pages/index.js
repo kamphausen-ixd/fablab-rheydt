@@ -39,12 +39,12 @@ import styles from '../styles/Home.module.css'
 
 
 const Hero = ({ }) => (
-  <div className="min-h-[100vh] grid grid-cols-1 grid-rows-6">
+  <div className="min-h-[80vh] grid grid-cols-1 grid-rows-6">
     <div className="bg-secondary text-neutral-50 row-start-1 row-span-4 pb-32">
       <div className="container mx-auto max-w-7xl p-4 flex flex-col lg:flex-row gap-8">
 
         <div className="lg:order-2 w-full">
-          <div className="relative aspect-video lg:aspect-square bg-red-500">
+          <div className="relative aspect-video lg:aspect-square bg-red-500 rounded-lg truncate">
             <Image
               src="/img/stock/tools-0.jpg"
               layout="fill"
@@ -54,10 +54,10 @@ const Hero = ({ }) => (
         </div>
 
         <div className="lg:order-1">
-          <div className="flex flex-col gap-4 lg:w-3/4">
+          <div className="flex flex-col gap-4 lg:gap-8 lg:w-3/4">
             <h1 className="text-2xl md:text-3xl lg:text-7xl">Ein Fab Lab für Mönchengladbach?</h1>
-            <p>Ein <strong>Fab Lab</strong> ("Fabrication Laboratory", dt. "Fabrikationslabor") ist eine offene Kreativwerkstatt, die das gemeinsame Arbeiten und Experimentieren mit der Herstellung von Dingen aller Art ermöglicht.</p>
-            <div className="flex flex-row">
+            <p className="text-lg lg:text-2xl">Ein <strong>Fab Lab</strong> ("Fabrication Laboratory", dt. "Fabrikationslabor") ist eine offene Kreativwerkstatt, die das gemeinsame Arbeiten und Experimentieren mit der Herstellung von Dingen aller Art ermöglicht.</p>
+            <div className="flex flex-row pt-2">
               <Link href="#">
                 <a className="py-2 px-4 bg-primary text-secondary rounded">Lorem Ipsum</a>
               </Link>
@@ -68,7 +68,7 @@ const Hero = ({ }) => (
       </div>
     </div>
     <div className="row-start-5">
-      <div className="bg-primary lg:h-32 -my-[12%] md:-my-[10%] lg:-my-8 mx-[10%] p-4 rounded grid grid-cols-3 lg:grid-cols-5 items-center justify-center">
+      <div className="bg-primary lg:h-32 -my-[12%] md:-my-[10%] lg:-my-8 mx-[10%] rounded grid grid-cols-3 lg:grid-cols-5 items-center justify-center shadow-md">
         {[
           { title: 'Ideate', icon: 'bi bi-lightbulb' },
           { title: 'Make', icon: 'bi bi-tools' },
