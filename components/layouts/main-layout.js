@@ -70,13 +70,19 @@ const Header = ({}) => {
       <div className="container mx-auto max-w-7xl">
         <nav className="flex flex-row flex-wrap justify-between items-center p-4" ref={menuRef}>
           <Link href="/">
-            <a className="rounded block bg-primary">
-              <div className="relative w-[60px] h-[60px]">
-                <Image
-                  src="/img/icons/cropped-icon_fablab-270x270.png"
-                  layout="fill"
-                  alt="Fab Lab"
-                  title="Fab Lab für Mönchengladbach" />
+            <a>
+              <div className="flex items-center gap-2">
+                <div className="rounded block bg-primary relative w-[60px] h-[60px]">
+                  <Image
+                    src="/img/icons/cropped-icon_fablab-270x270.png"
+                    layout="fill"
+                    alt="Fab Lab"
+                    title="Fab Lab für Mönchengladbach" />
+                </div>
+                <div>
+                  <span className="block w-full text-xl font-bold text-primary">FabLab</span>
+                  <span className="block w-full text-xl font-thin text-primary">Mönchengladbach</span>
+                </div>
               </div>
             </a>
           </Link>
