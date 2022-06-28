@@ -74,11 +74,14 @@ export default function Home() {
 
       {/* Global Site Tag (gtag.js) - Google Analytics */}
       <Script
+        id="my-gtag"
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=G-NQ8G98M5E9`}
       />
 
-      <Script strategy="lazyOnload">
+      <Script
+        id="load-my-gtag"
+        strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -351,38 +354,139 @@ export default function Home() {
       </div>
 
 
-      <div id="partner" className="py-16 bg-secondary text-neutral-50">
+      <div id="partners" className="py-16 bg-secondary text-neutral-50">
         <div className="container mx-auto max-w-7xl p-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-4 lg:w-3/4">
-            <h2 id="partner" className="text-2xl lg:text-3xl">Partner</h2>
+            <Link href="#partners"><a>
+              <h2 className="text-2xl lg:text-3xl hover:text-quartary transition-all">Partner</h2>
+            </a></Link>
             <p className="text-lg lg:text-xl">Neben einem Träger braucht das Projekt Partner, die sich für seine Umsetzung engagieren und von der neuen Einrichtung profitieren. Insbesondere Unternehmen der Stadt, die Hochschule, Volkshochschule, Berufskollegs sowie andere Bildungseinrichtungen sind hier herzlich eingeladen. <i className='bi bi-hearts'/></p>
           </div>
           <div className="grid grid-cols-4 gap-8">
             {[
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/triangle.png', opacityStart: '25' },
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/square.png', opacityStart: '25' },
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/circle.png', opacityStart: '25' },
+              {
+                title: 'Jetzt unterstützen!',
+                image: '/img/shapes/circle-bianco-q.png',
+                opacityStart: '25',
+                bgColor: 'bg-primary',
+                href: GOOGLE_FORMS_URL
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/triangle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/square.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/circle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
 
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/square.png', opacityStart: '25' },
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/circle.png', opacityStart: '25' },
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/triangle.png', opacityStart: '25' },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/square.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/circle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/triangle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
 
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/square.png', opacityStart: '25' },
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/circle.png', opacityStart: '25' },
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/triangle.png', opacityStart: '25' },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/square.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/circle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/triangle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
 
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/square.png', opacityStart: '25' },
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/circle.png', opacityStart: '25' },
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/shapes/triangle.png', opacityStart: '25' },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/square.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/circle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/triangle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
 
-              { title: 'Platzhalter für Dein Logo. :-)', image: '/img/logos/schola-vitae-512w.jpg', opacityStart: '75' },
-            ].map(({ title, image, opacityStart }, i) => (
-              <div key={i} className="aspect-square rounded truncate relative">
-                <Image src={image} layout="fill" className={`
-                  object-cover opacity-${opacityStart} hover:opacity-100 transition-all
-                `} title={title} alt={title}/>
-              </div>
-            ))}
+              {
+                title: 'Schola Vitae e.V. - Lernen für das Leben',
+                image: '/img/logos/schola-vitae-512w.jpg',
+                opacityStart: '75',
+                bgColor: null,
+                href: 'https://schola-vitae.de'
+              },
+            ].map(({ title, image, opacityStart, bgColor, href }, i) => {
+
+              const img = <Image
+                src={image}
+                layout="fill"
+                className={`object-cover opacity-${opacityStart} hover:opacity-100 transition-all`}
+                title={title}
+                alt={title} />
+
+              if (href) return (
+                <Link href={href}>
+                  <a key={i} target="_blank" className={` aspect-square rounded truncate relative ${bgColor} `}>
+                  {img}
+                  </a>
+                </Link>)
+
+              return (<div key={i} className={` aspect-square rounded truncate relative ${bgColor} `}>
+                {img}
+              </div>)
+
+            })}
           </div>
         </div>
       </div>

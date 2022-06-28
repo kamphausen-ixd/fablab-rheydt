@@ -120,6 +120,24 @@ const Footer = ({}) => (
   </footer>
 )
 
+const Banner = ({}) => {
+
+  const [bannerState, setBannerState] = useState(true)
+  const toggleBanner = () => {
+    setBannerState(!bannerState)
+  }
+
+  if (bannerState) return(
+    <div className="fixed bottom-0 bg-black w-full">
+      <div className="container mx-auto w-max-5xl h-24 text-neutral-100 flex justify-between items-center p-4 text-sm">
+        <p>By using this website, you agree to our use of cookies and analytics. We use both to provide you with a great experience and to help our website run effectively. We never ever share our data.</p>
+        <i className="bi bi-x-lg text-2xl" onClick={toggleBanner} />
+      </div>
+    </div>
+  )
+  return null
+}
+
 export default function MainLayout({ children }) {
   return (
     <div>
@@ -128,6 +146,7 @@ export default function MainLayout({ children }) {
         {children}
       </main>
       <Footer/>
+      <Banner/>
     </div>
   )
 }
