@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import Script from 'next/script'
 import MainLayout from '../components/layouts/main-layout'
-import styles from '../styles/Home.module.css'
+
+const GOOGLE_FORMS_URL = 'https://forms.gle/Dv1wNcP3ZLRGu37F7'
 
 const Hero = ({ }) => (
   <div className=" grid grid-cols-1 grid-rows-5">
@@ -20,12 +22,19 @@ const Hero = ({ }) => (
         </div>
 
         <div className="lg:order-1">
-          <div className="flex flex-col gap-4 lg:gap-8 lg:w-3/4">
+          <div className="flex flex-col gap-4 lg:gap-8 lg:w-4/5">
             <h1 className="text-2xl md:text-3xl lg:text-7xl">Ein Fab Lab für Mönchengladbach?</h1>
-            <p className="text-lg lg:text-2xl">Ein <strong>Fab Lab</strong> (&quot;Fabrication Laboratory&quot;, dt. &quot;Fabrikationslabor&quot;) ist eine offene Kreativwerkstatt, die das gemeinsame Arbeiten und Experimentieren mit der Herstellung von Dingen aller Art ermöglicht.</p>
+            <p className="text-lg lg:text-2xl">Ein <strong>Fab Lab</strong> (&quot;Fabrication Laboratory&quot;, dt. &quot;Fabrikationslabor&quot;) ist eine offene Kreativwerkstatt, die das gemeinsame Arbeiten und Experimentieren mit der Herstellung von Dingen aller Art ermöglicht. Und genau das möchten wir - zentral in Rheydt oder Mönchengladbach. <i className="bi bi-boxes" /></p>
             <div className="flex flex-row pt-2">
-              <Link href="#">
-                <a className="py-2 px-4 bg-primary text-secondary rounded">Unterstützen</a>
+              <Link href={GOOGLE_FORMS_URL}>
+                <a
+                  className="py-2 px-4 bg-primary text-secondary rounded"
+                  target="_blank"
+                  alt="Zum Google Formular"
+                  title="Zum Google Formular">
+                  <span>Unterstützen</span>
+                  <i className="bi bi-arrow-right pl-2" />
+                </a>
               </Link>
             </div>
           </div>
@@ -56,65 +65,119 @@ const Hero = ({ }) => (
 )
 
 export default function Home() {
+
+  const authors = 'IG FabLab für Mönchengladbach & Schola Vitae e.V.'
+  const title = 'Fab Lab für Mönchengladbach'
+
   return (
     <MainLayout>
+
+      {/* Global Site Tag (gtag.js) - Google Analytics */}
+      <Script
+        id="my-gtag"
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-NQ8G98M5E9`}
+      />
+
+      <Script
+        id="load-my-gtag"
+        strategy="lazyOnload">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-NQ8G98M5E9', {
+            page_path: window.location.pathname,
+          });
+      `}
+      </Script>
+
       <Head>
-        <title>Fab Lab für Mönchengladbach</title>
+        <title>{title}</title>
+        <meta name="apple-mobile-web-app-title" content={title} />
+        <meta charset="utf-8" />
+        <meta name="revisit-after" content="1 day" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="author" content={authors} />
+        <meta name="copyright" content={authors} />
+        <meta name="robots" content="index, follow" />
         <meta name="description" content="Fab Lab für Mönchengladbach" />
+        <meta name="keywords" content="Fabrication Lab, Kreativwerkstatt, Mönchengladbach, Rheydt, Maker-Kultur, Do-It-Yourself, DIY, Werkstatt" />
+
+        <meta name="theme-color" content="#252526"></meta>
+        <meta name="msapplication-TileColor" content="#FBDC4F" />
         <link rel="icon" href="/img/icons/cropped-icon_fablab-32x32.png" sizes="32x32" />
         <link rel="icon" href="/img/icons/cropped-icon_fablab-192x192.png" sizes="192x192" />
+        <link rel="apple-touch-icon-precomposed" href="/img/icons/cropped-icon_fablab-180x180.png"></link>
         <link rel="apple-touch-icon" href="/img/icons/cropped-icon_fablab-180x180.png" />
         <meta name="msapplication-TileImage" content="/img/icons/cropped-icon_fablab-270x270.png" />
+
       </Head>
 
       <Hero />
 
-
       <div id="lab" className="py-16">
         <div className="container mx-auto max-w-7xl p-4 grid grid-cols-1 gap-8">
           <div className="flex flex-col gap-4 lg:w-3/4">
-            <h2 className="text-2xl lg:text-3xl">Lab</h2>
-            <p className="text-lg lg:text-xl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores illum consequatur explicabo accusamus aut rerum debitis, facere ipsa dolore sint, nostrum aspernatur earum quo iste modi aperiam. Soluta, minus quo.</p>
+            <Link href="#lab"><a>
+              <h2 className="text-2xl lg:text-3xl hover:text-quartary transition-all">
+                Lab
+              </h2>
+            </a></Link>
+            <p className="text-lg lg:text-xl">Wir stellen uns ein FabLab für unsere Stadt als einen Zentralen Ort vor, um kreatives Ausprobieren und Austausch zu fördern. Wir möchten einen niedrigschwelligen Zugang zu Technologie und Fertigungsverfahren bieten, Neugier wecken und den Austausch von Wissen unterstützen.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 image: '/img/stock/laser-0.jpg',
-                title: 'Laserschneiden',
-                text: '',
+                title: 'Laserschneiden & Gravieren',
+                text: `Mit den richtigen Geräten lassen sich aus Vektorgrafiken - digitalen Skizzen - Zuschnitte aus unterschiedlichem Material machen: Holz, Pappe, Acrylglas und weitere. Daraus können viele kreative Dinge entstehen. Auch Gravuren sind möglich.`,
               },
               {
                 image: '/img/stock/print-0.jpg',
                 title: '3D-Druck',
-                text: '',
+                text: `Im Verfahren der additiven Fertigung können Objekte und Bauteile schichtweise hergestellt werden. Es gibt dabei unterschiedliche Verfahren und Möglichkeiten zu entdecken, die sowohl im privaten, als auch im industriellen Bereich Anwendung finden können.`,
               },
               {
                 image: '/img/stock/electronics-0.jpg',
-                title: 'Elektronik & Robotik',
-                text: '',
+                title: 'Elektronik',
+                text: 'Löten, Messen ausprobieren. In einer Elektronikwerkstatt können nicht nur neue Geräte entstehen, sondern auch alte repariert werden. Aus ausgedienten Produkten können Teile gewonnen und neue Ideen umgesetz werden.',
+              },
+              {
+                image: '/img/stock/tech-0.jpg',
+                title: 'Programmieren',
+                text: `Mit Hilfe kleiner Computer können zum Beispiel Projekte im Bereich Robotik und Automatisierung umgesetzt werden. Der Kreativität sind hier keine Grenzen gesetz und unterschiedlichste Ideen und Projekte lassen sich leicht als Inspiration finden.`,
               },
               {
                 image: '/img/stock/cnc-0.jpg',
-                title: 'CNC',
-                text: '',
+                title: 'Holzarbeiten & CNC',
+                text: `In der Werkstatt stehen diverse Hand- und Elektrogeräte zur fachmännischen Bearbeitung von Holz zur Verfügung. Wir denken hier an Akku-Schrauber, (Stand-)Bohrmaschien, Sägen und an eine CNC-Fräse. Diese ermöglich die computergeführte, präzise Bearbeitung.`,
+              },
+              {
+                image: '/img/stock/tech-1.jpg',
+                title: 'Reparatur & Wiederverwertung',
+                text: `Alte Geräte lassen sich vielleicht mit Hilfe der Community reparieren - oder andernfalls zu Gunsten anderer Reparaturen oder neuer Projekte wiederverwerten. Oft enthalten Altgeräte noch nützliche Bauteile.`,
               },
               {
                 image: '/img/stock/group-0.jpg',
                 title: 'Zusammenarbeit',
-                text: '',
+                text: `Das FabLab lebt vom Austausch von Ideen und Kooperation. Es ist ein sicherer Ort, um Ideen auszuprobieren und gemeinsam an etwas zu arbeiten und lernen. Unabhängig von Vorkenntnissen, Ausbildung oder Hintergrund.`,
               },
               {
                 image: '/img/stock/prototype-0.jpg',
                 title: 'Prototyping',
-                text: '',
+                text: `Das FabLab bringt alles mit, was für die Herstellung funktionstüchtiger Prototypen benötigt wird. Egal ob für den privaten Gebrauch, die Schule, Fachhochschule, Uni - oder für eine Start-Up Idee.`,
               },
 
-            ].map(({ title, image }, i) => (
+            ].map(({ title, image, text }, i) => (
               <div key={i} className="flex flex-col gap-4">
                 <div className="aspect-video rounded truncate relative">
                   <Image src={image} layout="fill" className="object-cover opacity-90 hover:opacity-100 transition-all" title={title} alt={title} />
                 </div>
-                <h3 className="text-xl font-bold">{title}</h3>
+                <div>
+                  <h3 className="text-xl font-bold">{title}</h3>
+                  <p>{text}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -122,14 +185,62 @@ export default function Home() {
       </div>
 
 
-      <div id="needs" className="py-16 bg-secondary text-neutral-50">
+      <div id="formats" className="py-16">
+        <div className="container mx-auto max-w-7xl p-4 grid grid-cols-1 gap-8">
+          <div className="flex flex-col gap-4 lg:w-3/4">
+            <Link href="#formats"><a>
+              <h2 className="text-2xl lg:text-3xl hover:text-quartary transition-all">
+                Angebote & Formate
+              </h2>
+            </a></Link>
+            <p className="text-lg lg:text-xl">Das FabLab stellt die Infrastruktur, kümmert sich um deren Wartung und Sicherheit. In Zusammenarbeit mit Partnern können zum Beispiel thematische Angebote und regelmäßige Formate eingerichtet werden.</p>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {[
+              {
+                image: '/img/stock/group-1.jpg',
+                title: 'Projektarbeiten',
+                text: `Schulen und andere Bildungseinrichtungen im Einzugsgebiet können bei Projektarbeiten auf die Kapazitäten des FabLab zurückgreifen und so ein völlig anderers Lernerlebnis schaffen.`,
+              },
+              {
+                image: '/img/stock/design-0.jpg',
+                title: 'Ideen- und Designworkshops',
+                text: 'Gemeinsam Ideen entwickeln, austauschen und weiterspinenn. Das FabLab kann Raum bieten für kreative Workshopformate. Dabei kann es auch ein Ort für den Austausch im und über das Quartier sein.',
+              },
+              {
+                image: '/img/stock/bike-repair-0.jpg',
+                title: 'Fahrradwerkstatt',
+                text: `Fahrräder reparieren, Verkehrssicherheit herstellen und insbesondere junge Fahrradfahrer befähigen, selbst nach dem Rad zu schauen? Vielleicht lassen sich hier Kooperationen mit lokalen Betrieben einrichten.`,
+              }
+            ].map(({ title, image, text }, i) => (
+              <div key={i} className="flex flex-col gap-4">
+                <div className="aspect-video rounded truncate relative">
+                  <Image src={image} layout="fill" className="object-cover opacity-90 hover:opacity-100 transition-all" title={title} alt={title} />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold">{title}</h3>
+                  <p>{text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+
+      <div id="location" className="py-16 bg-secondary text-neutral-50">
         <div className="container mx-auto max-w-7xl p-4 grid lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-4 lg:w-3/4">
-            <h2 className="text-2xl lg:text-3xl">Location</h2>
-            <p className="text-lg lg:text-xl">Für die Umsetzung des Projekts wird eine geignete, gut erreichbare und offene Laction benötigt. Das FabLab soll Gäste einladen und auf die Stadt wirken.</p>
+            <Link href="#location"><a>
+              <h2 className="text-2xl lg:text-3xl hover:text-quartary transition-all">Location</h2>
+            </a></Link>
+            <p className="text-lg lg:text-xl">Für die Umsetzung des Projekts wird eine geignete, gut erreichbare und offene Laction benötigt. Das FabLab soll Gäste einladen und auf die Stadt wirken. <i className="bi bi-geo-alt-fill"/></p>
             <div className="flex flex-row pt-2">
               <Link href="#">
-                <a className="py-2 px-4 bg-primary text-secondary rounded">Einen Vorschlag machen</a>
+                <a className="py-2 px-4 bg-primary text-secondary rounded">
+                  <span>Vorschlag machen</span>
+                  <i className="bi bi-arrow-right pl-2"/>
+                </a>
               </Link>
             </div>
           </div>
@@ -183,11 +294,13 @@ export default function Home() {
       </div>
 
 
-      <div id="needs" className="py-16">
+      <div id="role-models" className="py-16">
         <div className="container mx-auto max-w-7xl p-4 grid grid-cols-1 gap-8">
           <div className="flex flex-col gap-4 lg:w-3/4">
-            <h2 className="text-2xl lg:text-3xl">Vorbilder</h2>
-            <p className="text-lg lg:text-xl">Anregungen und Vorbilder lassen sich sowohl international, als auch in der Umgebung von Mönchengladbach finden. Das Konzept FabLab findet überall auf der Welt Anwendung. Nachfolgend findest Du ein paar Beispiele als Inspiration. <i className='bi bi-lightbulb'></i></p>
+            <Link href="#role-models"><a>
+              <h2 className="text-2xl lg:text-3xl hover:text-quartary transition-all">Vorbilder</h2>
+            </a></Link>
+            <p className="text-lg lg:text-xl">Anregungen und Vorbilder lassen sich sowohl international, als auch in der Umgebung von Mönchengladbach finden. Das Konzept FabLab findet überall auf der Welt Anwendung. Nachfolgend findest Du ein paar Beispiele als Inspiration. <i className='bi bi-lightbulb-fill'></i></p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 items-center justify-center">
             {[
@@ -241,34 +354,139 @@ export default function Home() {
       </div>
 
 
-      <div id="partner" className="py-16 bg-secondary text-neutral-50">
+      <div id="partners" className="py-16 bg-secondary text-neutral-50">
         <div className="container mx-auto max-w-7xl p-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="flex flex-col gap-4 lg:w-3/4">
-            <h2 id="partner" className="text-2xl lg:text-3xl">Partner</h2>
-            <p className="text-lg lg:text-xl">Neben einem Träger braucht das Projekt Partner, die sich für seine Umsetzung engagieren und von der neuen Einrichtung profitieren. Insbesondere Unternehmen der Stadt, die Hochschule, Volkshochschule, sowie andere Bildungseinrichtungen sind hier herzlich eingeladen. <i className='bi bi-hearts'/></p>
+            <Link href="#partners"><a>
+              <h2 className="text-2xl lg:text-3xl hover:text-quartary transition-all">Partner</h2>
+            </a></Link>
+            <p className="text-lg lg:text-xl">Neben einem Träger braucht das Projekt Partner, die sich für seine Umsetzung engagieren und von der neuen Einrichtung profitieren. Insbesondere Unternehmen der Stadt, die Hochschule, Volkshochschule, Berufskollegs sowie andere Bildungseinrichtungen sind hier herzlich eingeladen. <i className='bi bi-hearts'/></p>
           </div>
           <div className="grid grid-cols-4 gap-8">
             {[
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/triangle.png' },
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/square.png' },
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/circle.png' },
+              {
+                title: 'Jetzt unterstützen!',
+                image: '/img/shapes/circle-bianco-q.png',
+                opacityStart: '25',
+                bgColor: 'bg-primary',
+                href: GOOGLE_FORMS_URL
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/triangle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/square.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/circle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
 
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/square.png' },
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/circle.png' },
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/triangle.png' },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/square.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/circle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/triangle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
 
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/square.png' },
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/circle.png' },
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/triangle.png' },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/square.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/circle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/triangle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
 
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/square.png' },
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/circle.png' },
-              { title: 'Hier könnte Dein Logo sein. :-)', image: '/img/shapes/triangle.png' },
-            ].map(({ title, image }, i) => (
-              <div key={i} className="aspect-square rounded truncate relative">
-                <Image src={image} layout="fill" className="object-cover opacity-25 hover:opacity-50 transition-all" title={title} alt={title}/>
-              </div>
-            ))}
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/square.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/circle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+              {
+                title: 'Platzhalter für Dein Logo. :-)',
+                image: '/img/shapes/triangle.png',
+                opacityStart: '25',
+                bgColor: null,
+                href: null
+              },
+
+              {
+                title: 'Schola Vitae e.V. - Lernen für das Leben',
+                image: '/img/logos/schola-vitae-512w.jpg',
+                opacityStart: '75',
+                bgColor: null,
+                href: 'https://schola-vitae.de'
+              },
+            ].map(({ title, image, opacityStart, bgColor, href }, i) => {
+
+              const img = <Image
+                src={image}
+                layout="fill"
+                className={`object-cover opacity-${opacityStart} hover:opacity-100 transition-all`}
+                title={title}
+                alt={title} />
+
+              if (href) return (
+                <Link href={href}>
+                  <a key={i} target="_blank" className={` aspect-square rounded truncate relative ${bgColor} `}>
+                  {img}
+                  </a>
+                </Link>)
+
+              return (<div key={i} className={` aspect-square rounded truncate relative ${bgColor} `}>
+                {img}
+              </div>)
+
+            })}
           </div>
         </div>
       </div>
