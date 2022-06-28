@@ -121,6 +121,12 @@ const Equipment = ({}) => {
             },
             {
               icon: 'bi bi-circle',
+              item: 'CAD-Workstations (Leistungsstarke PC)',
+              href: 'https://garage-lab.de/unsere-werkstaetten/protolab/'
+            },
+
+            {
+              icon: 'bi bi-circle',
               item: 'Schneidplotter',
               href: 'https://fablab-siegen.de/das-fab-lab/maschinen-und-technologien/#Schneidplotter'
             },
@@ -140,6 +146,12 @@ const Equipment = ({}) => {
             { icon: 'bi bi-circle', item: 'Kompressor', href: null },
             { icon: 'bi bi-circle', item: 'Druckluftnagler', href: null },
             { icon: 'bi bi-circle', item: 'Heißluftföhn', href: null },
+
+            {
+              icon: 'bi bi-circle',
+              item: 'Drehmaschine',
+              href: 'https://garage-lab.de/unsere-werkstaetten/metallwerkstatt/'
+            },
 
             {
               icon: 'bi bi-circle',
