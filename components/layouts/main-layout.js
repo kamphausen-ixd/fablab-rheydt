@@ -70,13 +70,19 @@ const Header = ({}) => {
       <div className="container mx-auto max-w-7xl">
         <nav className="flex flex-row flex-wrap justify-between items-center p-4" ref={menuRef}>
           <Link href="/">
-            <a className="rounded block bg-primary">
-              <div className="relative w-[60px] h-[60px]">
-                <Image
-                  src="/img/icons/cropped-icon_fablab-270x270.png"
-                  layout="fill"
-                  alt="Fab Lab"
-                  title="Fab Lab für Mönchengladbach" />
+            <a>
+              <div className="flex items-center gap-2">
+                <div className="rounded block bg-primary relative w-[60px] h-[60px]">
+                  <Image
+                    src="/img/icons/cropped-icon_fablab-270x270.png"
+                    layout="fill"
+                    alt="Fab Lab"
+                    title="Fab Lab für Mönchengladbach" />
+                </div>
+                <div>
+                  <span className="block w-full text-xl font-bold text-primary">FabLab</span>
+                  <span className="block w-full text-xl font-thin text-primary">Mönchengladbach</span>
+                </div>
               </div>
             </a>
           </Link>
@@ -129,9 +135,9 @@ const Banner = ({}) => {
 
   if (bannerState) return(
     <div className="fixed bottom-0 bg-black w-full">
-      <div className="container mx-auto w-max-5xl h-24 text-neutral-100 flex justify-between items-center p-4 text-sm">
-        <p>By using this website, you agree to our use of cookies and analytics. We use both to provide you with a great experience and to help our website run effectively. We never ever share our data.</p>
-        <i className="bi bi-x-lg text-2xl" onClick={toggleBanner} />
+      <div className="container mx-auto w-max-5xl min-h-24 text-neutral-100 flex justify-between items-center p-4 text-xs md:text-sm">
+        <p className="w-4/5">By using this website, you agree to our use of cookies and analytics. We use both to provide you with a great experience and to help our website run effectively. We never ever share our data.</p>
+        <i className="bi bi-x-lg text-2xl p-4" onClick={toggleBanner} />
       </div>
     </div>
   )

@@ -236,10 +236,14 @@ export default function Home() {
             </a></Link>
             <p className="text-lg lg:text-xl">Für die Umsetzung des Projekts wird eine geignete, gut erreichbare und offene Laction benötigt. Das FabLab soll Gäste einladen und auf die Stadt wirken. <i className="bi bi-geo-alt-fill"/></p>
             <div className="flex flex-row pt-2">
-              <Link href="#">
-                <a className="py-2 px-4 bg-primary text-secondary rounded">
+              <Link href={GOOGLE_FORMS_URL}>
+                <a
+                  className="py-2 px-4 bg-primary text-secondary rounded"
+                  target="_blank"
+                  alt="Zum Google Formular"
+                  title="Zum Google Formular">
                   <span>Vorschlag machen</span>
-                  <i className="bi bi-arrow-right pl-2"/>
+                  <i className="bi bi-arrow-right pl-2" />
                 </a>
               </Link>
             </div>
