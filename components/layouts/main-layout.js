@@ -59,9 +59,10 @@ const Header = ({}) => (
 )
 
 const Footer = ({}) => (
-  <footer className="py-16 bg-secondary text-neutral-900">
+  <footer className="py-16 bg-secondary text-neutral-900 p-4">
     <div className="container mx-auto max-w-7xl">
-      © 2022 Interessengemeinschaft «FabLab für Mönchengladbach».
+      <span className="block md:inline">© 2022 Interessengemeinschaft</span>
+      <span className="block md:inline">«FabLab für Mönchengladbach».</span>
     </div>
   </footer>
 )
