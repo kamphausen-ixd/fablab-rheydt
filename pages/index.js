@@ -24,8 +24,8 @@ const Hero = ({ }) => (
 
         <div className="lg:order-1">
           <div className="flex flex-col gap-4 lg:gap-8 lg:w-4/5">
-            <h1 className="text-2xl md:text-3xl lg:text-7xl">Ein Fab Lab für Mönchengladbach?</h1>
-            <p className="text-lg lg:text-2xl">Ein <strong>Fab Lab</strong> (&quot;Fabrication Laboratory&quot;, dt. &quot;Fabrikationslabor&quot;) ist eine offene Kreativwerkstatt, die das gemeinsame Arbeiten und Experimentieren mit der Herstellung von Dingen aller Art ermöglicht. Und genau das möchten wir - zentral in Rheydt oder Mönchengladbach. <i className="bi bi-boxes" /></p>
+            <h1 className="text-2xl md:text-3xl lg:text-7xl">Ein FabLab für Mönchengladbach?</h1>
+            <p className="text-lg lg:text-2xl">Ein <strong>FabLab</strong> (&quot;Fabrication Laboratory&quot;, dt. &quot;Fabrikationslabor&quot;) ist eine offene Kreativwerkstatt, die das gemeinsame Arbeiten und Experimentieren mit der Herstellung von Dingen aller Art ermöglicht. Und genau das möchten wir - zentral in Rheydt oder Mönchengladbach. <i className="bi bi-boxes" /></p>
             <div className="flex flex-row pt-2">
               <Link href={GOOGLE_FORMS_URL}>
                 <a
