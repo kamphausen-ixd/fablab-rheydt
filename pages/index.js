@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import Script from 'next/script'
+import { useState } from 'react'
 import MainLayout from '../components/layouts/main-layout'
 
 const GOOGLE_FORMS_URL = 'https://forms.gle/Dv1wNcP3ZLRGu37F7'
@@ -64,6 +65,153 @@ const Hero = ({ }) => (
   </div>
 )
 
+
+const Equipment = ({}) => {
+
+  const [paneState,setPaneState] = useState(false)
+  const togglePane = () => {
+    setPaneState(!paneState)
+  }
+
+  return (<div id="formats" className="py-16">
+    <div className="grid grid-cols-1 gap-4">
+      <div className="container mx-auto max-w-7xl p-4 flex flex-col gap-8">
+        <Link href="#equipment"><a>
+          <h2 className="text-2xl lg:text-3xl hover:text-quartary transition-all">
+            Ausstattung
+          </h2>
+        </a></Link>
+        <p className="text-lg lg:text-xl">
+          Um den Personen die im Lab arbeiten wollen das nötige Handwerkszeug bereitzustellen muss eine gewisse Grundausstattung bereitgestellt werden. Diese könnte entweder durch den Projektträger angeschafft oder durch Projektpartner bereitgestellt werden. Ein paar erste Ideen für die Ausstattung haben wir auf einer Liste zusammengestellt.
+        </p>
+      </div>
+      <div className={`
+        bg-primary shadow-inner- ${paneState ? 'h-auto' : 'h-0 truncate'}
+      `}>
+        <div className="container mx-auto max-w-7xl p-4 flex flex-col gap-8 font-bold">
+          <h3>Equipment-Wunschliste *</h3>
+        </div>
+        <div className="container mx-auto max-w-7xl p-4 flex flex-col flex-wrap gap-2 md:max-h-[600px] lg:max-h-[450px]">
+          {[
+            { item: 'Engagement', href: '', icon: 'bi bi-check2-circle ' },
+            { item: 'Partner aus Wirtschaft & Gesellschaft', href: '', icon: 'bi bi-circle ' },
+            { item: 'Sicherheits- & Laborordnung', href: '', icon: 'bi bi-circle ' },
+            { item: 'Fachliche Aufsicht', href: '', icon: 'bi bi-circle ' },
+            // { item: 'Säge', href: '', icon: 'bi bi-tools' }
+
+            {
+              icon: 'bi bi-circle',
+              item: 'FLM-Drucker (Schmelzschichtung)',
+              href: 'https://fablab-siegen.de/das-fab-lab/maschinen-und-technologien/#FLM_Schmelzschichtung'
+            },
+            {
+              icon: 'bi bi-circle',
+              item: 'SL-Drucker (Stereolithografie)',
+              href: 'https://fablab-siegen.de/das-fab-lab/maschinen-und-technologien/#SL_Stereolithografie'
+            },
+            {
+              icon: 'bi bi-circle',
+              item: 'LS-Drucker (Laser-Sintern)',
+              href: 'https://fablab-siegen.de/das-fab-lab/maschinen-und-technologien/#LS_Laser-Sintern'
+            },
+            {
+              icon: 'bi bi-circle',
+              item: 'CO2 Laserschneider',
+              href: 'https://fablab-siegen.de/das-fab-lab/maschinen-und-technologien/#Laserschneider'
+            },
+            {
+              icon: 'bi bi-circle',
+              item: 'Schneidplotter',
+              href: 'https://fablab-siegen.de/das-fab-lab/maschinen-und-technologien/#Schneidplotter'
+            },
+            {
+              icon: 'bi bi-circle',
+              item: 'CNC-Fräse',
+              href: 'https://fablab-siegen.de/das-fab-lab/maschinen-und-technologien/#Schneidplotter'
+            },
+
+            { icon: 'bi bi-circle', item: 'Standbohrmaschine', href: null },
+            { icon: 'bi bi-circle', item: 'Bandschleifer', href: null },
+            { icon: 'bi bi-circle', item: 'Stichsäge', href: null },
+            { icon: 'bi bi-circle', item: 'Handkreissäge', href: null },
+            { icon: 'bi bi-circle', item: 'Kapp-/ Kreissägenkombination', href: null },
+            { icon: 'bi bi-circle', item: 'Dekupiersäge', href: null },
+            { icon: 'bi bi-circle', item: 'Akkuschrauber', href: null },
+            { icon: 'bi bi-circle', item: 'Kompressor', href: null },
+            { icon: 'bi bi-circle', item: 'Druckluftnagler', href: null },
+            { icon: 'bi bi-circle', item: 'Heißluftföhn', href: null },
+
+            {
+              icon: 'bi bi-circle',
+              item: 'Lötstationen',
+              href: 'https://fablab-siegen.de/das-fab-lab/maschinen-und-technologien/#Elektrowerkstatt'
+            },
+            {
+              icon: 'bi bi-circle',
+              item: 'Labornetzteil & Messgeräte',
+              href: 'https://fablab-siegen.de/das-fab-lab/maschinen-und-technologien/#Elektrowerkstatt'
+            },
+
+            { icon: 'bi bi-circle', item: 'Konferenzraum & Ausstattung', href: null },
+            { icon: 'bi bi-circle', item: 'Beleuchtung', href: null },
+            { icon: 'bi bi-circle', item: 'Werkbänke', href: null },
+            { icon: 'bi bi-circle', item: 'Tische', href: null },
+            { icon: 'bi bi-circle', item: 'Regale', href: null },
+            { icon: 'bi bi-circle', item: 'Belüftung', href: null },
+
+          ].map(({ item, href, icon }, i) => {
+
+            if(href) return (
+              <Link key={i} href={href}>
+                <a className="font-bold">
+                  {icon && <i className={`${icon} pr-2`} />}
+                  <span> {item}</span>
+                  <span className="font-light">
+                    [<i className="bi bi-link-45deg" />]
+                  </span>
+                </a>
+              </Link>
+            )
+
+            return (
+              <span key={i} className="font-bold">
+                {icon && <i className={`${icon} pr-2`} />} <span> {item}</span>
+              </span>
+            )
+
+          })}
+        </div>
+        <div className="container mx-auto max-w-7xl p-4 flex flex-col gap-8">
+          <p className='w-4/5'>* Beispielhaft und angelehnt an die Ausstattung ähnlicher Einrichtungen. Dient hier nur der ersten Illustration der Projektidee. Fehlt hier etwas? <Link href={GOOGLE_FORMS_URL}><a className="underline">Gib uns gerne einen Hinweis!</a></Link></p>
+        </div>
+        {
+          paneState && (
+            <div className='text-center text-tertiary flex items-center justify-center'>
+              <div className="flex flex-col py-2 px-4 rounded">
+                <span className="text-3xl" onClick={togglePane}><i className="bi bi-arrow-bar-up" /></span>
+                <span className="text-xl uppercase" onClick={togglePane}>Close</span>
+              </div>
+            </div>
+          )
+        }
+      </div>
+      <div className='text-center text-2xl'>
+        {
+          !paneState && (
+            <div className='text-center text-quartary flex items-center justify-center'>
+              <div className="flex flex-col py-2 px-4 rounded">
+                <span className="text-xl uppercase" onClick={togglePane}>Open</span>
+                <span className="text-3xl" onClick={togglePane}><i className="bi bi-arrow-bar-down" /></span>
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </div>)
+}
+
+
 export default function Home() {
 
   const authors = 'IG FabLab für Mönchengladbach & Schola Vitae e.V.'
@@ -124,7 +272,7 @@ export default function Home() {
                 Lab
               </h2>
             </a></Link>
-            <p className="text-lg lg:text-xl">Wir stellen uns ein FabLab für unsere Stadt als einen Zentralen Ort vor, um kreatives Ausprobieren und Austausch zu fördern. Wir möchten einen niedrigschwelligen Zugang zu Technologie und Fertigungsverfahren bieten, Neugier wecken und den Austausch von Wissen unterstützen.</p>
+            <p className="text-lg lg:text-xl">Wir stellen uns ein FabLab für unsere Stadt als einen zentralen Ort vor, um kreatives Ausprobieren und Austausch zu fördern. Wir möchten einen niedrigschwelligen Zugang zu Technologie und Fertigungsverfahren bieten, Neugier wecken und den Austausch von Wissen unterstützen.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -146,7 +294,7 @@ export default function Home() {
               {
                 image: '/img/stock/tech-0.jpg',
                 title: 'Programmieren',
-                text: `Mit Hilfe kleiner Computer können zum Beispiel Projekte im Bereich Robotik und Automatisierung umgesetzt werden. Der Kreativität sind hier keine Grenzen gesetz und unterschiedlichste Ideen und Projekte lassen sich leicht als Inspiration finden.`,
+                text: `Mit Hilfe kleiner Computer können zum Beispiel Projekte im Bereich Robotik und Automatisierung umgesetzt werden. Der Kreativität sind hier keine Grenzen gesetzt und unterschiedlichste Ideen und Projekte lassen sich leicht als Inspiration finden.`,
               },
               {
                 image: '/img/stock/cnc-0.jpg',
@@ -184,6 +332,7 @@ export default function Home() {
         </div>
       </div>
 
+      <Equipment/>
 
       <div id="formats" className="py-16">
         <div className="container mx-auto max-w-7xl p-4 grid grid-cols-1 gap-8">
@@ -205,7 +354,7 @@ export default function Home() {
               {
                 image: '/img/stock/design-0.jpg',
                 title: 'Ideen- und Designworkshops',
-                text: 'Gemeinsam Ideen entwickeln, austauschen und weiterspinenn. Das FabLab kann Raum bieten für kreative Workshopformate. Dabei kann es auch ein Ort für den Austausch im und über das Quartier sein.',
+                text: 'Gemeinsam Ideen entwickeln, austauschen und weiterspinnen. Das FabLab kann Raum bieten für kreative Workshopformate. Dabei kann es auch ein Ort für den Austausch im und über das Quartier sein.',
               },
               {
                 image: '/img/stock/bike-repair-0.jpg',
@@ -234,7 +383,7 @@ export default function Home() {
             <Link href="#location"><a>
               <h2 className="text-2xl lg:text-3xl hover:text-quartary transition-all">Location</h2>
             </a></Link>
-            <p className="text-lg lg:text-xl">Für die Umsetzung des Projekts wird eine geignete, gut erreichbare und offene Laction benötigt. Das FabLab soll Gäste einladen und auf die Stadt wirken. <i className="bi bi-geo-alt-fill"/></p>
+            <p className="text-lg lg:text-xl">Für die Umsetzung des Projekts wird eine geignete, gut erreichbare und offene Location benötigt. Das FabLab soll Gäste einladen und auf die Stadt wirken. <i className="bi bi-geo-alt-fill"/></p>
             <div className="flex flex-row pt-2">
               <Link href={GOOGLE_FORMS_URL}>
                 <a
